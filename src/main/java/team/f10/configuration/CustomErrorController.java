@@ -29,6 +29,6 @@ public class CustomErrorController implements ErrorController {
         model.addAttribute("quoteText", quote.getFirst());
         model.addAttribute("quoteAuthor", quote.getSecond());
 
-        return "error";
+        return "statuses/error";
     }
 }

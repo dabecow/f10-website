@@ -3,12 +3,11 @@
 
 <t:wrapper>
     <jsp:attribute name="title">Error</jsp:attribute>
-
     <jsp:attribute name="content">
-        <div class="container">
 
-            <h2>${message}</h2>
+        <div class="container">
             <div class="text">
+            <div class="heading">${message}</div>
                 <p>${quoteText}</p>
                 <p>${quoteAuthor}</p>
             </div>

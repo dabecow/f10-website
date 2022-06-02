@@ -36,7 +36,7 @@ public class EmployeeController {
         model.addAttribute("employees", employees);
         model.addAttribute("metaName", PAGE_META_NAME);
 
-        return "view-employees";
+        return "employee/view-employees";
     }
 
     @GetMapping("/add")
@@ -44,7 +44,7 @@ public class EmployeeController {
         model.addAttribute("users", userService.getNotEmployeesUsers());
         model.addAttribute("occupations", occupationRepository.findAll());
         model.addAttribute("employee", new AddEmployeeDto());
-        return "add-employee";
+        return "employee/add-employee";
     }
 
     @PostMapping("/add/process")

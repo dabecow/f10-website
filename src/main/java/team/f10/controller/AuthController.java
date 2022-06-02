@@ -33,7 +33,7 @@ public class AuthController {
     public String loginView(Model model) {
         model.addAttribute("metaName", PAGE_META_NAME);
         model.addAttribute("user", new LoginUserDto());
-        return "login";
+        return "auth/login";
     }
 
     @PostMapping("/login")
@@ -53,7 +53,7 @@ public class AuthController {
     public String registerView(Model model) {
         model.addAttribute("metaName", PAGE_META_NAME);
         model.addAttribute("user", new RegisterUserDto());
-        return "register";
+        return "auth/register";
     }
 
     @PostMapping("/register")
