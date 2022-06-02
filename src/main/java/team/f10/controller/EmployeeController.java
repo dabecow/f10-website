@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+import team.f10.dto.AddEmployeeDto;
+import team.f10.dto.EditEmployeeDto;
 import team.f10.dto.EmployeeDto;
 import team.f10.model.Employee;
 import team.f10.repository.OccupationRepository;
@@ -41,15 +43,36 @@ public class EmployeeController {
     public String addEmployeeView(Model model) {
         model.addAttribute("users", userService.getNotEmployeesUsers());
         model.addAttribute("occupations", occupationRepository.findAll());
+        model.addAttribute("employee", new AddEmployeeDto());
         return "add-employee";
     }
 
-    @PostMapping("/add")
-    public RedirectView addEmployee(@ModelAttribute("employee") Employee employee, RedirectAttributes redirectAttributes) {
-        final RedirectView redirectView = new RedirectView("/employees/add", true);
-        Employee e = employeeService.addEmployee(employee);
-        redirectAttributes.addFlashAttribute("savedEmployee", e);
-        redirectAttributes.addFlashAttribute("saveEmployeeSuccess", true);
+    @PostMapping("/add/process")
+    public RedirectView addEmployee(@ModelAttribute("employee") AddEmployeeDto employeeDto, RedirectAttributes redirectAttributes) {
+        final RedirectView redirectView = new RedirectView("/employees", true);
+        employeeService.addEmployee(employeeDto);
+        return redirectView;
+    }
+
+    @GetMapping("/edit")
+    public String editEmployeesView(Model model) {
+        model.addAttribute("employees", employeeService.getEmployees());
+        model.addAttribute("occupations", occupationRepository.findAll());
+        model.addAttribute("employee", new EditEmployeeDto());
+        return "employee/edit-employee";
+    }
+
+    @PostMapping("/edit/process")
+    public RedirectView processEmployeeEdit(@ModelAttribute("employee") EditEmployeeDto employeeDto, RedirectAttributes redirectAttributes) {
+        final RedirectView redirectView = new RedirectView("/employees", true);
+        employeeService.editEmployee(employeeDto);
+        return redirectView;
+    }
+
+    @PostMapping("/remove")
+    public RedirectView removeEmployee(@ModelAttribute("employee") EditEmployeeDto employeeDto, RedirectAttributes redirectAttributes) {
+        final RedirectView redirectView = new RedirectView("/employees", true);
+        employeeService.removeEmployee(employeeDto);
         return redirectView;
     }
 }

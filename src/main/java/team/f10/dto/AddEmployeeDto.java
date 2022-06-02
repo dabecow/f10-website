@@ -11,10 +11,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDto {
-    private Long id;
-    private String firstName;
-    private String username;
-    private String occupation;
-    private PhotoDto photo;
+public class AddEmployeeDto {
+    private Long userId;
+    private Long occupationId;
 }

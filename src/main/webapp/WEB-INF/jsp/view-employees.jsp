@@ -1,11 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:wrapper>
     <jsp:attribute name="content">
-        <link rel="stylesheet" href="css/employeeCards.css">
-        <link rel="stylesheet" href="css/customButtons.css">
+        <link rel="stylesheet" href="/css/employeeCards.css">
+        <link rel="stylesheet" href="/css/customButtons.css">
 
         <div class="container">
             <div class="text">
@@ -33,14 +33,20 @@
 
                         </c:forEach>
 
-                        </div>
-
                           <div class="service">
-                          <a href="employees/add">
-                            <div class = "submit">
-                                Add employee
-                            </div>
-                          </a>
+                              <a href="/employees/add">
+                                <div class = "submit">
+                                    Add employee
+                                </div>
+                              </a>
+
+                              <br/>
+
+                              <a href="/employees/edit">
+                                  <div class = "submit">
+                                      Edit employee
+                                  </div>
+                                </a>
                           </div>
 
     </jsp:attribute>

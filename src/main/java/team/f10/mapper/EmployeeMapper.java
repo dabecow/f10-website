@@ -20,6 +20,7 @@ public class EmployeeMapper {
                 .firstName(employee.getUser().getFirstName())
                 .occupation(employee.getOccupation().getName())
                 .photo(photoMapper.toDto(employee.getUser().getProfileImage()))
+                .username(employee.getUser().getUsername())
                 .build();
     }
 

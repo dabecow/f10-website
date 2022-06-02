@@ -6,11 +6,14 @@ import team.f10.dto.PhotoDto;
 import team.f10.model.Photo;
 
 import java.util.Base64;
+import java.util.Objects;
 
 @Slf4j
 @Component
 public class PhotoMapper {
     public PhotoDto toDto(Photo photo) {
+        if (Objects.nonNull(photo))
             return new PhotoDto(photo.getFileType(), Base64.getEncoder().encodeToString(photo.getImageData()));
+        else return new PhotoDto();
     }
 }

@@ -11,10 +11,10 @@
 
         <div class="container">
 
-                    <form:form method="POST" action="/employees/add/process" class = "service" modelAttribute="employee">
-                        <form:select path="userId">
-                                <c:forEach items="${users}" var="user">
-                                    <option value="${user.id}">${user.username}</option>
+                    <form:form method="POST" class="service" modelAttribute="employee">
+                        <form:select path="employeeId">
+                                <c:forEach items="${employees}" var="e">
+                                    <option value="${e.id}">${e.firstName} (${e.username})</option>
                                 </c:forEach>
                         </form:select>
                         <form:select path="occupationId">
@@ -23,7 +23,8 @@
                                 </c:forEach>
                         </form:select>
 
-                        <input type="submit" class="submit" value="Add"/>
+                        <input type="submit" class="submit" value="Edit" formaction="edit/process"/>
+                        <input type="submit" class="submit" value="Remove" formaction="remove"/>
                     </form:form>
         </div>
     </jsp:attribute>

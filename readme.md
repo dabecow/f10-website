@@ -9,3 +9,5 @@
 5. move quotes to js side
 6. articles
 7. n+1 in employees
+8. move components into tags
+9. user profile

@@ -2,6 +2,7 @@ package team.f10.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +23,7 @@ public class Employee {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+    @Setter
     @ManyToOne(fetch = FetchType.EAGER)
     private Occupation occupation;
 
