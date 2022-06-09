@@ -16,16 +16,15 @@ nav {
     text-align: center;
 }
 
-
 nav ul {
     margin-top: 0.5vw;
     list-style-type: none;
     margin-bottom: 0.5vw;
     padding-left: 0px;
-  }
+}
 
 nav ul li {
-    margin-right: 0.5em;
+    margin-right: 0.5vw;
 }
 
 nav li {

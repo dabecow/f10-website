@@ -12,7 +12,7 @@
         <div class="container">
                     <c:url var="processLoginUrl" value="/login"/>
 
-                    <form:form method="post" action="${processLoginUrl}" modelAttribute="user" class = "service">
+                    <form:form autocomplete="off" method="post" action="${processLoginUrl}" modelAttribute="user" class = "service">
 
                         <form:input type="text" placeholder="Username" path="username"/>
                         <form:input type="password" placeholder="Password" path="password"/>

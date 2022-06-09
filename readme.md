@@ -4,10 +4,12 @@
 #TODO
 1. Manage metanames by aop
 2. jwt
-3. add occupation and employees
-4. validator
-5. move quotes to js side
-6. articles
-7. n+1 in employees
-8. move components into tags
-9. user profile
+3. validator
+4. move quotes to js side
+6. n+1 in employees and articles
+7. move components into tags
+8. user profile
+9. cascade
+10. logging
+11. tags in articles
+12. blob for article text

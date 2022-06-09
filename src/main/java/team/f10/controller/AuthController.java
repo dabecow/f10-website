@@ -13,10 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import team.f10.dto.LoginUserDto;
 import team.f10.dto.RegisterUserDto;
-import team.f10.dto.UserDto;
 import team.f10.exception.LoginFailedException;
 import team.f10.model.User;
-import team.f10.service.PhotoService;
 import team.f10.service.UserService;
 
 @Controller
@@ -25,8 +23,6 @@ import team.f10.service.UserService;
 public class AuthController {
 
     private final UserService userService;
-    private final PhotoService photoService;
-
     private static final String PAGE_META_NAME = "Authentication";
 
     @GetMapping("/login")
@@ -62,10 +58,8 @@ public class AuthController {
                                         RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/", true);
 
-        User user = userService.addUser(dto);
+        User user = userService.addUser(dto, image);
         log.info("Added user " + user.getUsername());
-
-        photoService.addPhoto(image, user);
 
         return redirectView;
     }

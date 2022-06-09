@@ -12,7 +12,7 @@
         <div class="container">
                     <c:url var="processRegisterUrl" value="/register"/>
 
-                    <form:form method="post" action="${processRegisterUrl}" modelAttribute="user" class = "service" enctype="multipart/form-data">
+                    <form:form autocomplete="off" method="post" action="${processRegisterUrl}" modelAttribute="user" class = "service" enctype="multipart/form-data">
 
                         <form:input type="text" placeholder="Username" path="username"/>
                         <form:input type="text" placeholder="Email" path="email"/>

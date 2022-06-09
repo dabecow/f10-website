@@ -29,7 +29,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="index.php?page=portfolio">Portfolio</a>
+                <a href="articles">Articles</a>
             </li>
 
             <li class="nav-item">

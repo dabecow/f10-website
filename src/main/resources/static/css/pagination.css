@@ -1,0 +1,25 @@
+.pagination {
+    max-width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align: center;
+}
+
+.currentPage {
+    background-color: white;
+    color: black;
+    padding: 4px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 0.7vw;
+}
+
+.pagination ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.pagination li {
+    display:inline-block;
+}
