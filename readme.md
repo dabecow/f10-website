@@ -1,6 +1,6 @@
 #Guides
 1. https://www.baeldung.com/spring-boot-jsp
-
+2. https://www.toptal.com/spring/spring-security-tutorial
 #TODO
 1. Manage metanames by aop
 2. jwt
