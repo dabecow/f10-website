@@ -12,14 +12,14 @@
         <div class="container">
 
                     <form:form method="POST" class="service" modelAttribute="employee">
-                        <form:select path="employeeId">
+                        <form:select path="userId">
                                 <c:forEach items="${employees}" var="e">
                                     <option value="${e.id}">${e.firstName} (${e.username})</option>
                                 </c:forEach>
                         </form:select>
-                        <form:select path="occupationId">
-                                <c:forEach items="${occupations}" var="occupation">
-                                    <option value="${occupation.id}">${occupation.name}</option>
+                        <form:select path="role">
+                                <c:forEach items="${roles}" var="role">
+                                    <option value="${role}">${role.name}</option>
                                 </c:forEach>
                         </form:select>
 

@@ -49,11 +49,11 @@ public class ArticleController {
         int numberOfPages = articlesPage.getTotalPages();
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("startPage", Math.max(currentPage - 3, 0));
-        model.addAttribute("endPage", Math.min(currentPage + 3, numberOfPages - 1));
+        model.addAttribute("endPage", Math.min(currentPage + 3, Math.max(numberOfPages - 1, 0)));
         model.addAttribute("articles", articlesPage.getContent());
         model.addAttribute("isLast", articlesPage.isLast());
         model.addAttribute("isFirst", articlesPage.isFirst());
-        model.addAttribute("maxPage", numberOfPages - 1);
+        model.addAttribute("maxPage", Math.max(numberOfPages - 1, 0));
         return "articles/view-articles";
     }
 

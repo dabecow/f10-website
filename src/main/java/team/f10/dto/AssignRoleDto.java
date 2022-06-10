@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import team.f10.model.Role;
 
 @Setter
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddEmployeeDto {
+public class AssignRoleDto {
     private Long userId;
-    private Long occupationId;
+    private Role role;
 }

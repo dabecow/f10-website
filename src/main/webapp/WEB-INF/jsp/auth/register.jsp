@@ -20,6 +20,7 @@
                         <form:input type="text" placeholder="First name" path="firstName"/>
                         <form:input type="text" placeholder="Last name" path="lastName"/>
                         <form:input type="text" placeholder="Patronymic" path="patronymic"/>
+                        <form:input type="text" placeholder="Occupation" path="occupation"/>
                         <input type="file" name="image"/>
 
                         <input type="submit" class="submit" value="Register"/>
