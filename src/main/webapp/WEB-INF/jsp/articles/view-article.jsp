@@ -1,6 +1,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <t:wrapper>
     <jsp:attribute name="title">About</jsp:attribute>
@@ -27,20 +28,24 @@
                 </div>
         </div>
 
-        <div class="service">
-                  <a href="/articles/${article.id}/edit">
-                    <div class = "submit">
-                        Edit
-                    </div>
-                  </a>
+        <sec:authorize access="hasAuthority('ADMIN')">
 
-                  <br/>
+            <div class="service">
+                      <a href="/articles/${article.id}/edit">
+                        <div class = "submit">
+                            Edit
+                        </div>
+                      </a>
 
-                  <a href="/articles/${article.id}/remove">
-                      <div class = "submit">
-                          Remove
-                      </div>
-                    </a>
-              </div>
+                      <br/>
+
+                      <a href="/articles/${article.id}/remove">
+                          <div class = "submit">
+                              Remove
+                          </div>
+                        </a>
+                  </div>
+        </sec:authorize>
+
     </jsp:attribute>
 </t:wrapper>

@@ -2,7 +2,6 @@ package team.f10.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User addUser(RegisterUserDto dto, MultipartFile image) {
         User user = userMapper.toUser(dto);
-        user.setRole(Role.ROLE_USER);
+        user.setRole(Role.USER);
         userRepository.save(user); //user should be persisted before adding photo by him
         Photo photo = photoService.addPhoto(image, user);
         user.setProfileImage(photo);
@@ -59,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getNotEmployeesUsers() {
-        return userMapper.toDtoList(userRepository.findByRoleIsNullOrRoleIn(List.of(Role.ROLE_USER)));
+        return userMapper.toDtoList(userRepository.findByRoleIsNullOrRoleIn(List.of(Role.USER)));
     }
 
     @Override
@@ -70,7 +69,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public List<EmployeeDto> getEmployees() {
-        return userMapper.toEmployeesList(userRepository.findByRoleIsNullOrRoleIn(List.of(Role.ROLE_ADMIN, Role.ROLE_DIRECTOR)));
+        return userMapper.toEmployeesList(userRepository.findByRoleIsNullOrRoleIn(List.of(Role.ADMIN, Role.LEADER)));
     }
 
     @Override
@@ -83,7 +82,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void unassignEmploymentRole(AssignRoleDto dto) {
         User user = getUserById(dto.getUserId());
-        user.setRole(Role.ROLE_USER);
+        user.setRole(Role.USER);
         userRepository.save(user);
     }
 }

@@ -3,9 +3,9 @@ package team.f10.model;
 import lombok.Getter;
 
 public enum Role {
-    ROLE_USER ("User"),
-    ROLE_ADMIN ("Admin"),
-    ROLE_DIRECTOR ("Director");
+    LEADER("Leader"),
+    ADMIN("Admin"),
+    USER("User");
 
     @Getter
     private final String name;

@@ -25,7 +25,7 @@ public class CustomControllerAdvice {
         Pair<String, String> quote = quotesUtil.getQuote();
         modelAndView.addObject("quoteText", quote.getFirst());
         modelAndView.addObject("quoteAuthor", quote.getSecond());
-        modelAndView.setViewName("error");
+        modelAndView.setViewName("statuses/error");
 
         return modelAndView;
     }

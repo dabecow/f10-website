@@ -1,6 +1,7 @@
 package team.f10.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+import team.f10.configuration.security.annotation.AdminOnly;
 import team.f10.dto.AssignRoleDto;
 import team.f10.dto.EmployeeDto;
 import team.f10.model.Role;
@@ -34,6 +36,7 @@ public class EmployeeController {
         return "employee/view-employees";
     }
 
+    @AdminOnly
     @GetMapping("/add")
     public String addEmployeeView(Model model) {
         model.addAttribute("users", userService.getNotEmployeesUsers());
@@ -42,6 +45,7 @@ public class EmployeeController {
         return "employee/add-employee";
     }
 
+    @AdminOnly
     @PostMapping("/add/process")
     public RedirectView addEmployee(@ModelAttribute("employee") AssignRoleDto dto, RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/employees", true);
@@ -49,6 +53,7 @@ public class EmployeeController {
         return redirectView;
     }
 
+    @AdminOnly
     @GetMapping("/edit")
     public String editEmployeesView(Model model) {
         model.addAttribute("employees", userService.getEmployees());
@@ -57,6 +62,7 @@ public class EmployeeController {
         return "employee/edit-employee";
     }
 
+    @AdminOnly
     @PostMapping("/edit/process")
     public RedirectView processEmployeeEdit(@ModelAttribute("employee") AssignRoleDto dto, RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/employees", true);
@@ -64,6 +70,7 @@ public class EmployeeController {
         return redirectView;
     }
 
+    @AdminOnly
     @PostMapping("/remove")
     public RedirectView removeEmployee(@ModelAttribute("employee") AssignRoleDto dto, RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/employees", true);
