@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +26,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -37,10 +39,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String patronymic;
+    private String occupation;
 
     @Setter
     @OneToOne(fetch = FetchType.LAZY)
     private Photo profileImage;
+
+    @Setter
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }
 

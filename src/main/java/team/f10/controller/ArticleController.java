@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+import team.f10.configuration.security.annotation.AdminOnly;
 import team.f10.dto.ArticleDto;
 import team.f10.dto.ArticleSmallDto;
 import team.f10.dto.CreateArticleDto;
@@ -49,21 +50,23 @@ public class ArticleController {
         int numberOfPages = articlesPage.getTotalPages();
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("startPage", Math.max(currentPage - 3, 0));
-        model.addAttribute("endPage", Math.min(currentPage + 3, numberOfPages - 1));
+        model.addAttribute("endPage", Math.min(currentPage + 3, Math.max(numberOfPages - 1, 0)));
         model.addAttribute("articles", articlesPage.getContent());
         model.addAttribute("isLast", articlesPage.isLast());
         model.addAttribute("isFirst", articlesPage.isFirst());
-        model.addAttribute("maxPage", numberOfPages - 1);
+        model.addAttribute("maxPage", Math.max(numberOfPages - 1, 0));
         return "articles/view-articles";
     }
 
     @GetMapping("/create")
+    @AdminOnly
     public String viewCreateArticle(Model model) {
         model.addAttribute("article", new CreateArticleDto());
         return "articles/create-articles";
     }
 
     @PostMapping("/create/process")
+    @AdminOnly
     public RedirectView processCreateArticle(@ModelAttribute("article") CreateArticleDto dto,
                                              @RequestParam("image") MultipartFile image,
                                              RedirectAttributes redirectAttributes){
@@ -80,6 +83,7 @@ public class ArticleController {
     }
 
     @GetMapping("/{articleId}/edit")
+    @AdminOnly
     public String viewEditArticle(@PathVariable("articleId") Long articleId, Model model) {
         EditArticleDto article = articleService.getArticleForEdit(articleId);
         model.addAttribute("article", article);
@@ -88,6 +92,7 @@ public class ArticleController {
     }
 
     @PostMapping("/{articleId}/edit/process")
+    @AdminOnly
     public RedirectView processEditArticle(@ModelAttribute("article") EditArticleDto dto,
                                            @RequestParam("image") MultipartFile image,
                                            @PathVariable("articleId") Long articleId,
@@ -98,6 +103,7 @@ public class ArticleController {
     }
 
     @GetMapping("/{articleId}/remove")
+    @AdminOnly
     public RedirectView viewRemoveArticle(@PathVariable("articleId") Long articleId, Model model) {
         final RedirectView redirectView = new RedirectView("/articles", true);
         articleService.removeArticle(articleId);

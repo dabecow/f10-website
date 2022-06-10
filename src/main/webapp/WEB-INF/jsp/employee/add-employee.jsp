@@ -17,9 +17,9 @@
                                     <option value="${user.id}">${user.username}</option>
                                 </c:forEach>
                         </form:select>
-                        <form:select path="occupationId">
-                                <c:forEach items="${occupations}" var="occupation">
-                                    <option value="${occupation.id}">${occupation.name}</option>
+                        <form:select path="role">
+                                <c:forEach items="${roles}" var="role">
+                                    <option value="${role}">${role.name}</option>
                                 </c:forEach>
                         </form:select>
 
