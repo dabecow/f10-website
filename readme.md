@@ -1,6 +1,7 @@
 #Guides
 1. https://www.baeldung.com/spring-boot-jsp
 2. https://www.toptal.com/spring/spring-security-tutorial
+3. https://habr.com/ru/post/482552/
 #TODO
 1. Manage metanames by aop
 2. jwt
@@ -16,3 +17,4 @@
 12. remove config.java
 13. sometimes error and advice don't work
 14. about us takes article
+15. password hashing

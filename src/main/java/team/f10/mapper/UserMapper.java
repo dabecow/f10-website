@@ -1,6 +1,7 @@
 package team.f10.mapper;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import team.f10.dto.EmployeeDto;
 import team.f10.dto.RegisterUserDto;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 public class UserMapper {
 
     private final PhotoMapper photoMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public UserDto toDto(User user) {
         return UserDto.builder()
@@ -33,7 +35,7 @@ public class UserMapper {
                 .patronymic(dto.getPatronymic())
                 .lastName(dto.getLastName())
                 .username(dto.getUsername())
-                .password(dto.getPassword())
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .email(dto.getEmail())
                 .occupation(dto.getOccupation())
                 .build();

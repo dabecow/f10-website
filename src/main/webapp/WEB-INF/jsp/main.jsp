@@ -1,4 +1,5 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <head>
@@ -44,8 +45,12 @@
         <p>
             © F10crew.ru • ОРЕЛ • 1566 - 2022
         </p>
-
-        <a href="login"> Login </a> | <a href="register"> Register </a>
+        <sec:authorize access="!isAuthenticated()">
+            <a href="/login"> Login </a> | <a href="/register"> Register </a>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <a href="/logout"> Log out </a>
+        </sec:authorize>
     </footer>
 
   </body>
